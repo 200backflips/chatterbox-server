@@ -1,0 +1,17 @@
+{
+  "name": "chatter-box",
+  "version": "1.0.0",
+  "description": "chat app",
+  "main": "index.js",
+  "dependencies": {
+    "nodemon": "^2.0.2",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "nodemon ./index.js localhost 8080"
+  },
+  "author": "Fredrik Karlsson",
+  "license": "MIT"
+}
