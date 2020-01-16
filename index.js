@@ -3,15 +3,17 @@ const io = require('socket.io')(server);
 const { addUser } = require('./users');
 
 io.on('connection', socket => {
-	socket.emit('join', `u has joined the chat`);
-
-	socket.on('message', message => {
-		console.log(message);
+	socket.on('join', username => {
+		return io.emit('join', `${username} has joined the chat`);
 	});
 
-	socket.on('disconnect', user => {
-		console.log(user);
-		console.log(`${user} has left the chat`);
+	socket.on('sentMessages', message => {
+		console.log(message)
+		return socket.broadcast.emit('receivedMessages', message);
+	});
+
+	socket.on('disconnect', data => {
+		console.log(data);
 	});
 });
 
