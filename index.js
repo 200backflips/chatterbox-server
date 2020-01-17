@@ -1,19 +1,28 @@
 const server = require('http').createServer();
 const io = require('socket.io')(server);
-const { addUser } = require('./users');
+
+const users = [];
+
+const addUser = name => {
+	name = name.toLowerCase();
+	if (!users.includes(name)) {
+		return true;
+	}
+	users.push(name);
+	return false;
+};
 
 io.on('connection', socket => {
+	socket.on('getUsername', username => {
+		io.emit('validateUsername', addUser(username));
+	});
+
 	socket.on('join', username => {
-		return io.emit('join', `${username} has joined the chat`);
+		return io.emit('join', username);
 	});
 
 	socket.on('sentMessages', message => {
-		console.log(message)
 		return io.emit('receivedMessages', message);
-	});
-
-	socket.on('disconnect', data => {
-		console.log(data);
 	});
 });
 
