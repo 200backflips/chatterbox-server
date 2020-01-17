@@ -1,20 +1,10 @@
 const server = require('http').createServer();
 const io = require('socket.io')(server);
-
-const users = [];
-
-const addUser = name => {
-	name = name.toLowerCase();
-	if (!users.includes(name)) {
-		return true;
-	}
-	users.push(name);
-	return false;
-};
+const { validateUsername } = require('./validator');
 
 io.on('connection', socket => {
-	socket.on('getUsername', username => {
-		io.emit('validateUsername', addUser(username));
+	socket.on('sendUsername', username => {
+		io.emit('validateUsername', validateUsername(username));
 	});
 
 	socket.on('join', username => {

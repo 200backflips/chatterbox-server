@@ -10,7 +10,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "test",
-    "start": "nodemon ./index.js localhost 8080"
+    "start": "nodemon ./src/index.js localhost 8080"
   },
   "author": "Fredrik Karlsson",
   "license": "MIT"
