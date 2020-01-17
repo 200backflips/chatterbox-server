@@ -9,7 +9,7 @@ io.on('connection', socket => {
 
 	socket.on('sentMessages', message => {
 		console.log(message)
-		return socket.broadcast.emit('receivedMessages', message);
+		return io.emit('receivedMessages', message);
 	});
 
 	socket.on('disconnect', data => {
