@@ -20,23 +20,23 @@ const validateUsername = username => {
 			};
 		case addUser(username) === true:
 			return {
-				error: 'username already taken'
+				error: 'unfortunately, that nickname is already taken'
 			};
 		case doesntStartWithLetter.test(username):
 			return {
-				error: 'must begin with letter'
+				error: 'your nickname must begin with letter'
 			};
 		case noSpacesAllowed.test(username):
 			return {
-				error: 'may not contain spaces'
+				error: 'your nickname may not contain spaces'
 			};
 		case username.length < 3:
 			return {
-				error: 'must be at least 3 characters'
+				error: 'your nickname must be at least 3 characters long'
 			};
 		case username.length > 20:
 			return {
-				error: 'cannot exceed 20 characters'
+				error: 'your nickname may not exceed 20 characters'
 			};
 		case fullRegEx.test(username):
 			users.push(username);
@@ -51,4 +51,4 @@ const validateUsername = username => {
 	}
 };
 
-module.exports = { addUser, validateUsername };
+module.exports = { addUser, validateUsername, users };
