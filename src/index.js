@@ -33,4 +33,3 @@ const handleSignal = signal => {
 
 process.on('SIGINT', handleSignal);
 process.on('SIGTERM', handleSignal);
-
