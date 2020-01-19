@@ -1,7 +1,6 @@
 const server = require('http').createServer();
 const io = require('socket.io')(server);
 const { validateUsername, users } = require('./validator');
-const signals = require('./signals');
 
 io.on('connection', socket => {
 	socket.on('sendUsername', username => {
