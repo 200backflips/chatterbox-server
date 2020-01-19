@@ -1,3 +1,5 @@
+const { logger } = require('./logger');
+
 const users = [];
 
 const addUser = name => {
@@ -39,6 +41,7 @@ const validateUsername = username => {
 				error: 'your nickname may not exceed 20 characters'
 			};
 		case fullRegEx.test(username):
+			logger.info(`username: ${username} has been added.`)
 			users.push(username);
 			return {
 				username: username,
