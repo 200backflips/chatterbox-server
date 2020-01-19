@@ -1,4 +1,5 @@
-/node_modules
+.gitignore
+node_modules
 
 quick-start-error.log
 quick-start-combined.log
